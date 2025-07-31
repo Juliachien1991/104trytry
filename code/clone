@@ -150,3 +150,10 @@ git push origin main
 # If you want to get the detailed information of a specific job, you can use
 # the following command:
 # python main.py -- 3 "your_job_id_here"        
+git add results/*
+git commit -m "Add latest crawl results"
+git push origin main
+git checkout -b results-branch
+git add results/*
+git commit -m "Add latest crawl results"
+git push origin results-branch
