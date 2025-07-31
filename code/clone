@@ -143,3 +143,10 @@ print(job_info)
 # python main.py -- 3 "your_job_id_here"
 # For example, to get the detailed information of job ID '71gqf':
 # python main.py -- 3 "71gqf"
+git add data/results.json
+git commit -m "Add latest crawl results"
+git push origin main
+# The detailed information will be printed to the console.
+# If you want to get the detailed information of a specific job, you can use
+# the following command:
+# python main.py -- 3 "your_job_id_here"        
