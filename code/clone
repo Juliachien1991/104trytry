@@ -110,3 +110,36 @@ for job in jobs:
 # python main.py --keyword "your_keyword_here" --page 2
 # For example, to search for the second page of "Python":
 # python main.py --keyword "Python" --page 2
+
+import requests
+
+
+def get_job(job_id):
+    """取得職缺詳細資料"""
+    url = f'https://www.104.com.tw/job/ajax/content/{job_id}'
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36',
+        'Referer': f'https://www.104.com.tw/job/{job_id}'
+    }
+
+    r = requests.get(url, headers=headers)
+    if r.status_code != requests.codes.ok:
+        print('請求失敗', r.status_code)
+        return
+
+    data = r.json()
+    return data['data']
+
+
+job_info = get_job('71gqf')
+print(job_info)
+# If you want to get the detailed information of a specific job, you can use the following command:
+# python main.py -- 3 "your_job_id_here"
+# For example, to get the detailed information of job ID '71gqf':
+# python main.py -- 3 "71gqf"
+# The detailed information will be printed to the console.
+# If you want to get the detailed information of a specific job, you can use
+# the following command:
+# python main.py -- 3 "your_job_id_here"
+# For example, to get the detailed information of job ID '71gqf':
+# python main.py -- 3 "71gqf"
