@@ -157,3 +157,42 @@ git checkout -b results-branch
 git add results/*
 git commit -m "Add latest crawl results"
 git push origin results-branch
+with open('results/result_file.json', 'w') as f:
+    json.dump(jobs, f)
+
+import os
+
+# 確保結果目錄存在
+if not os.path.exists('results'):
+    os.makedirs('results')
+
+# 保存結果
+with open('results/job_results.json', 'w') as f:
+    json.dump(jobs, f)
+# The results will be saved in the "results" directory.
+print()
+print("Results saved in 'results/job_results.json'")
+with open('results/job_results.json', 'w') as f:
+    json.dump(jobs, f, ensure_ascii=False, indent=2)
+    import pandas as pd
+
+df = pd.DataFrame(jobs)
+print(df.head())
+import pandas as pd
+
+df = pd.DataFrame(jobs)
+df.to_excel('results/job_results.xlsx', index=False)
+print("Results saved in 'results/job_results.xlsx'")
+# The results will be saved in the "results" directory.
+print("Results saved in 'results/job_results.json'")
+# The results will be saved in the "results" directory.
+import os
+import json
+
+# 確保 results 目錄存在
+if not os.path.exists('results'):
+    os.makedirs('results')
+
+# 假設爬取的資料是 jobs
+with open('results/jobs.json', 'w', encoding='utf-8') as f:
+    json.dump(jobs, f, ensure_ascii=False, indent=4)
